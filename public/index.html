@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Real time chat</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        
+        <input id="username" placeholder="Username" />
+        <ul id="messages"></ul>
+
+        <form id="form">
+
+            <input id="input" autocomplete="off" />
+            <button>Send</button>
+
+        </form>
+
+        <script src="/socket.io/socket.io.js"></script>
+
+        <script>
+
+            const socket = io();
+
+            const form = document.getElementById('form');
+            const input = document.getElementById('input');
+            const messages = document.getElementById('messages');
+            const usernameInput = document.getElementById('username');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (input.value && usernameInput.value) {
+                    socket.emit('chat message', {
+                        user: usernameInput.value,
+                        message: input.value
+                    });
+                    input.value = '';
+                }
+            });
+
+            socket.on('chat message', function(data) {
+                const item = document.createElement('li');
+                item.textContent = data.user + ": " + data.message;
+
+                if(data.user === usernameInput.value) {
+                    item.classList.add('my-message'); 
+                } else {
+                    item.classList.add('other-message');
+                }
+
+                messages.appendChild(item);
+            });
+
+        </script>
+    </body>
+</html>

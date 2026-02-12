@@ -1,0 +1,74 @@
+body {
+    background-color: #fcdffc;
+}
+#username {
+  width: 30%;
+  padding: 10px;
+  border-radius: 25px;   /* mismo borde redondo */
+  border: none;
+  outline: none;
+  background-color: #d381de;  /* mismo morado claro */
+  color: white;
+  margin-bottom: 10px;
+}
+
+#messages {
+  list-style: none;
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#messages li {
+  max-width: 70%;
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  word-wrap: break-word;
+}
+
+.my-message {
+  background: #9e5bc2;
+  align-self: flex-end;
+  text-align: right;
+  color: #ffffff;
+}
+
+.other-message {
+  background: #8851a5;
+  align-self: flex-start;
+  color: #ffffff;
+}
+
+#form {
+  display: flex;
+  align-items: center;
+  background-color: #d381de;
+  border-radius: 999px;
+  padding: 5px;
+}
+
+#input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 20px;
+  color: #ffffff;
+  outline: none;
+}
+
+button {
+  border: none;
+  background: #9e5bc2;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #b97cff;
+}
